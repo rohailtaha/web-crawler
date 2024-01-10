@@ -1,4 +1,5 @@
 import express from 'express';
+import { crawlUrl } from './crawl';
 const app = express();
 const PORT = 3000;
 
@@ -6,7 +7,9 @@ const PORT = 3000;
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('Hello');
+  const url = req.body.url;
+  let urls = crawlUrl(url);
+  return res.json({ data: urls });
 });
 
 app.listen(PORT, () => {
