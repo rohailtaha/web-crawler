@@ -1,15 +1,12 @@
 const fetch = require('node-fetch');
 
-export async function crawlUrl(url) {
+async function crawlUrl(url) {
   const urlsToVisit = [url];
 
   let hrefValues = [];
   urlsToVisit.forEach(async url => {
-    const url = urlsToVisit.pop();
-
     const response = await fetch.default(url);
     const pageHTML = await response.text();
-    console.log(typeof pageHTML);
     let match;
     const hrefRegex = /href=["'](.*?)["']/g;
 
@@ -20,3 +17,7 @@ export async function crawlUrl(url) {
 
   return hrefValues;
 }
+
+module.exports = {
+  crawlUrl,
+};

@@ -1,5 +1,5 @@
-import express from 'express';
-import { crawlUrl } from './crawl';
+const express = require('express');
+const { crawlUrl } = require('./crawl');
 const app = express();
 const PORT = 3000;
 
